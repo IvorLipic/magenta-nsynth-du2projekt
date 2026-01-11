@@ -9,3 +9,9 @@ build/
 *.DS_Store
 .vscode
 .idea/
+magenta/models/nsynth/baseline/baseline-ckpt/*
+magenta/models/nsynth/baseline/data/wavs/*
+magenta/models/nsynth/baseline/logs/baseline_finetune/*
+!magenta/models/nsynth/baseline/baseline-ckpt/readme.txt
+!magenta/models/nsynth/baseline/data/wavs/readme.txt
+!magenta/models/nsynth/baseline/logs/baseline_finetune/readme.txt
