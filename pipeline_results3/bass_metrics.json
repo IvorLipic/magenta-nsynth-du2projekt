@@ -1,0 +1,18 @@
+{
+  "instrument": "bass",
+  "test_sample": "bass - guitarbass.wav",
+  "baseline": {
+    "mse": 0.03208523243665695,
+    "spectral_dist": 0.7507109045982361
+  },
+  "finetuned": {
+    "mse": 0.038766924291849136,
+    "spectral_dist": 0.7153931260108948
+  },
+  "improvement_mse_percent": -20.82481336515769,
+  "improvement_spectral_percent": 4.7045777409860365,
+  "epochs": 20,
+  "training_samples": 15,
+  "final_loss": 0.00115192832890898,
+  "checkpoint_path": "/workspaces/magenta-nsynth-du2projekt/magenta/models/nsynth/baseline/logs/bass_only_finetune/model.ckpt"
+}

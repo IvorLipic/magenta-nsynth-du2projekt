@@ -1,0 +1,18 @@
+{
+  "instrument": "guitar",
+  "test_sample": "ukelele - nice bro.wav",
+  "baseline": {
+    "mse": 0.0037927322555333376,
+    "spectral_dist": 0.2509479522705078
+  },
+  "finetuned": {
+    "mse": 0.008569112978875637,
+    "spectral_dist": 0.24747222661972046
+  },
+  "improvement_mse_percent": -125.93475647795218,
+  "improvement_spectral_percent": 1.3850384037152357,
+  "epochs": 20,
+  "training_samples": 12,
+  "final_loss": 0.0012129845563322306,
+  "checkpoint_path": "/workspaces/magenta-nsynth-du2projekt/magenta/models/nsynth/baseline/logs/guitar_only_finetune/model.ckpt"
+}
