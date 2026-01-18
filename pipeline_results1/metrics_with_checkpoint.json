@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "mse": 0.060077134519815445,
+    "rmse": 0.24510636925697327,
+    "mae": 0.19578537344932556,
+    "spectral_dist": 2.0136022567749023
+  },
+  "finetune": {
+    "mse": 0.053801216185092926,
+    "rmse": 0.23195089399814606,
+    "mae": 0.18997099995613098,
+    "spectral_dist": 0.2312212437391281
+  },
+  "improvement_mse_percent": 10.446432474254017,
+  "improvement_spectral_percent": 88.51703449313926,
+  "config": {
+    "checkpoint": "/workspaces/magenta-nsynth-du2projekt/magenta/models/nsynth/baseline/baseline-ckpt/model.ckpt-351648",
+    "samples": 12,
+    "epochs": 20,
+    "weights_loaded": false
+  }
+}
