@@ -2,7 +2,9 @@ import librosa
 import numpy as np
 from magenta.models.nsynth.baseline.models.ae_configs import nfft_1024
 import tensorflow.compat.v1 as tf
+import matplotlib.pyplot as plt
 import generate_from_wav
+import os
 
 # Disable eager execution for TF 1.x compatibility
 tf.disable_eager_execution()
@@ -51,10 +53,10 @@ if __name__ == "__main__":
             self.raw_audio = False 
             
     model_params = HParams()
-    num_steps = 10
+    num_steps = 3
 
-    audio1, _ = librosa.load('input.wav', sr=16000)
-    audio2, _ = librosa.load('baseline_reconstruction.wav', sr=16000)
+    audio1, _ = librosa.load('./data/wavs/bell - business.wav', sr=16000)
+    audio2, _ = librosa.load('./data/wavs/guitar - hard.wav', sr=16000)
 
     audio1 = generate_from_wav.audio_pad_and_center(audio1, 16384)
     audio2 = generate_from_wav.audio_pad_and_center(audio2, 16384)
@@ -92,4 +94,35 @@ if __name__ == "__main__":
             for i, spec in enumerate(results):
                 print(f"Interpolation {i}: shape {spec.shape}")
 
-            
+            # Visualize original spectrograms
+            spec1_result = sess.run(spec1, feed_dict=feed_dict)
+            spec2_result = sess.run(spec2, feed_dict=feed_dict)
+
+            plt.figure(figsize=(12, 4))
+            plt.subplot(1, 2, 1)
+            plt.imshow(spec1_result[0, :, :, 0], aspect='auto', origin='lower', cmap='viridis')
+            plt.colorbar(label='Log Magnitude')
+            plt.xlabel('Time Frames')
+            plt.ylabel('Frequency Bins')
+            plt.title('Spectrogram 1 (Bell)')
+            plt.tight_layout()
+
+            plt.subplot(1, 2, 2)
+            plt.imshow(spec2_result[0, :, :, 0], aspect='auto', origin='lower', cmap='viridis')
+            plt.colorbar(label='Log Magnitude')
+            plt.xlabel('Time Frames')
+            plt.ylabel('Frequency Bins')
+            plt.title('Spectrogram 2 (Guitar)')
+            plt.tight_layout()
+            plt.show()
+
+            plt.figure(figsize=(12, 3 * len(results)))
+            for i, spec in enumerate(results):
+                plt.subplot(len(results), 1, i + 1)
+                plt.imshow(spec[0, :, :, 0], aspect='auto', origin='lower', cmap='viridis')
+                plt.colorbar(label='Log Magnitude')
+                plt.xlabel('Time Frames')
+                plt.ylabel('Frequency Bins')
+                plt.title(f'Interpolation {i}')
+            plt.tight_layout()
+            plt.show()
